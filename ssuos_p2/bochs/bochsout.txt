@@ -32,7 +32,7 @@
 00000000000i[      ]   SB16 support: no
 00000000000i[      ]   USB support: no
 00000000000i[      ]   VGA extension support: vbe
-00000000000i[MEM0  ] allocated memory at 0x7f2afc35e010. after alignment, vector=0x7f2afc35f000
+00000000000i[MEM0  ] allocated memory at 0x7fdbe937d010. after alignment, vector=0x7fdbe937e000
 00000000000i[MEM0  ] 128.00MB
 00000000000i[MEM0  ] mem block size = 0x00100000, blocks=128
 00000000000i[MEM0  ] rom at 0xfffe0000/131072 ('/usr/local/share/bochs/BIOS-bochs-latest')
@@ -42,7 +42,7 @@
 00000000000i[DEV   ] PIIX3 PCI-to-ISA bridge present at device 1, function 0
 00000000000i[PLUGIN] init_dev of 'cmos' plugin device by virtual method
 00000000000i[CMOS  ] Using utc time for initial clock
-00000000000i[CMOS  ] Setting initial clock to: Sun Sep 10 07:08:28 2017 (time0=1504994908)
+00000000000i[CMOS  ] Setting initial clock to: Sun Sep 10 15:41:50 2017 (time0=1505025710)
 00000000000i[PLUGIN] init_dev of 'dma' plugin device by virtual method
 00000000000i[DMA   ] channel 4 used by cascade
 00000000000i[PLUGIN] init_dev of 'pic' plugin device by virtual method
@@ -172,29 +172,6 @@
 00001523025i[BXVGA ] VBE known Display Interface b0c5
 00001525950i[VBIOS ] VBE Bios $Id: vbe.c,v 1.65 2014/07/08 18:02:25 vruppert Exp $
 00001870517i[BIOS  ] ata0-0: PCHS=20/16/63 translation=none LCHS=20/16/63
-00002911586i[XGUI  ] charmap update. Font Height is 16
-00005747346i[BIOS  ] IDE time out
-08495144014i[BIOS  ] Booting from 0000:7c00
-09483280000p[XGUI  ] >>PANIC<< POWER button turned off.
-09483280000i[CPU0  ] CPU is in protected mode (active)
-09483280000i[CPU0  ] CS.mode = 32 bit
-09483280000i[CPU0  ] SS.mode = 32 bit
-09483280000i[CPU0  ] EFER   = 0x00000000
-09483280000i[CPU0  ] | EAX=00000000  EBX=000000a0  ECX=0000000a  EDX=0000006e
-09483280000i[CPU0  ] | ESP=0000fff2  EBP=0000fffa  ESI=00009173  EDI=00000800
-09483280000i[CPU0  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf AF pf cf
-09483280000i[CPU0  ] | SEG sltr(index|ti|rpl)     base    limit G D
-09483280000i[CPU0  ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
-09483280000i[CPU0  ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-09483280000i[CPU0  ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-09483280000i[CPU0  ] |  ES:0020( 0004| 0|  0) 00020000 ffffffff 1 1
-09483280000i[CPU0  ] |  FS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-09483280000i[CPU0  ] |  GS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-09483280000i[CPU0  ] | EIP=0001000b (0001000b)
-09483280000i[CPU0  ] | CR0=0x60000011 CR2=0x00000000
-09483280000i[CPU0  ] | CR3=0x00000000 CR4=0x00000000
-09483280000i[CPU0  ] 0x0001000b>> jmp .-2 (0x0001000b) : EBFE
-09483280000i[CMOS  ] Last time is 1504995382 (Sun Sep 10 07:16:22 2017)
-09483280000i[XGUI  ] Exit
-09483280000i[      ] restoring default signal behavior
-09483280000i[SIM   ] quit_sim called with exit code 1
+00003706186i[XGUI  ] charmap update. Font Height is 16
+00005747323i[BIOS  ] IDE time out
+05725649421i[BIOS  ] Booting from 0000:7c00
