@@ -69,103 +69,179 @@ PRINT_NEW_LINE:
 ; add your code here
 ; print current date to boch display
 
+mov		ax, 0
+;setting cursor
+mov		ah, 02h
+mov		bh, 0
+mov		dh, 0
+mov		dl, 40
+int 10h	
 
-NTER:
+INTER:
+mov		ax, 0
 mov     ah, 0x04
 int     0x1a
-
-mov		bx, 20
-
-CENTURY:
-mov		bh, ch
-shr		bh, 4
-add		bh, 0x30
-mov		bl, ch
-and		bl, 0x0f
-add		bl, 0x30
-mov		ax, bx
-mov		bx, 40*2
-mov     byte[es:bx], ah
-add     bx, 1
-mov     byte[es:bx], 0x0e
-add     bx, 1
-mov     byte[es:bx], al
-add     bx, 1
-mov     byte[es:bx], 0x0e
-add     bx, 1
-
-mov		si, bx
 mov		bx, 0
+mov		si, 40
 
-
-
-YEAR:
-mov		bh, cl
-shr		bh, 4
-add		bh, 0x30
-mov		bl, cl
-and		bl, 0x0f
-add		bl, 0x30
-mov		ax, bx
-mov		bx, 0
-mov		bx, si
-mov     byte[es:bx], ah
-add     bx, 1
-mov     byte[es:bx], 0x0e
-add     bx, 1
-mov     byte[es:bx], al
-add     bx, 1
-mov     byte[es:bx], 0x0e
-add     bx, 1
-
-mov		si, bx
-mov		bx, 0
-
-MONTH:
-mov		bh, dh
-shr		bh, 4
-add		bh, 0x30
-mov		bl, dh
-and		bl, 0x0f
-add		bl, 0x30
-mov		ax, bx
-mov		bx, 0
-mov		bx, si
-mov     byte[es:bx], ah
-add     bx, 1
-mov     byte[es:bx], 0x0e
-add     bx, 1
-mov     byte[es:bx], al
-add     bx, 1
-mov     byte[es:bx], 0x0e
-add     bx, 1
-
-mov		si, bx
-mov		bx, 0
-
-DAY:
+PARSE:
+;;day  dx : 0x0911
 mov		bh, dl
 shr		bh, 4
 add		bh, 0x30
 mov		bl, dl
 and		bl, 0x0f
 add		bl, 0x30
-mov		ax, bx
-mov		bx, 0
-mov		bx, si
-mov     byte[es:bx], ah
-add     bx, 1
-mov     byte[es:bx], 0x0e
-add     bx, 1
-mov     byte[es:bx], al
-add     bx, 1
-mov     byte[es:bx], 0x0e
-add     bx, 1
+push	bx; 11
+;;month
+mov		bh, dh
+shr		bh, 4
+add		bh, 0x30
+mov		bl, dh
+and		bl, 0x0f
+add		bl, 0x30
+push	bx; 09
+;;year
+mov		bh, cl
+shr		bh, 4
+add		bh, 0x30
+mov		bl, cl
+and		bl, 0x0f
+add		bl, 0x30
+push	bx; 17
+;;century
+mov		bh, ch
+shr		bh, 4
+add		bh, 0x30
+mov		bl, ch
+and		bl, 0x0f
+add		bl, 0x30
+push	bx; 20
 
-mov		si, bx
-mov		bx, 0
-
-
+;print 
+pop		dx ; cc
+mov 	ah, 09h
+mov		al, dh
+mov		bh, 0	
+mov		bl, 0x0e
+mov		cx, 1
+push	dx; 20
+int 	10h
+;movecursor
+mov		ah, 02h
+mov		bh, 0
+mov		dh, 0
+mov		dl, 41
+add		si, 1
+int 	10h
+;print 
+pop		dx ; cc
+mov 	ah, 09h
+mov		al, dl
+mov		bh, 0	
+mov		bl, 0x0e
+mov		cx, 1
+int 	10h
+;movecursor
+mov		ah, 02h
+mov		bh, 0
+mov		dh, 0
+mov		dl, 42
+add		si, 1
+int 	10h
+;print 
+pop		dx ; yy
+mov 	ah, 09h
+mov		al, dh
+mov		bh, 0	
+mov		bl, 0x0e
+mov		cx, 1
+push	dx; 20
+int 	10h
+;movecursor
+mov		ah, 02h
+mov		bh, 0
+mov		dh, 0
+mov		dl, 43
+add		si, 1
+int 	10h
+;print 
+pop		dx ; yy
+mov 	ah, 09h
+mov		al, dl
+mov		bh, 0	
+mov		bl, 0x0e
+mov		cx, 1
+int 	10h
+;movecursor
+mov		ah, 02h
+mov		bh, 0
+mov		dh, 0
+mov		dl, 44
+add		si, 1
+int 	10h
+;print 
+pop		dx ; mm
+mov 	ah, 09h
+mov		al, dh
+mov		bh, 0	
+mov		bl, 0x0e
+mov		cx, 1
+push	dx; 20
+int 	10h
+;movecursor
+mov		ah, 02h
+mov		bh, 0
+mov		dh, 0
+mov		dl, 45
+add		si, 1
+int 	10h
+;print  
+pop		dx ; mm
+mov 	ah, 09h
+mov		al, dl
+mov		bh, 0	
+mov		bl, 0x0e
+mov		cx, 1
+int 	10h
+;movecursor
+mov		ah, 02h
+mov		bh, 0
+mov		dh, 0
+mov		dl, 46
+add		si, 1
+int 	10h
+;print 
+pop		dx ; dd
+mov 	ah, 09h
+mov		al, dh
+mov		bh, 0	
+mov		bl, 0x0e
+mov		cx, 1
+push	dx; 20
+int 	10h
+;movecursor
+mov		ah, 02h
+mov		bh, 0
+mov		dh, 0
+mov		dl, 47
+add		si, 1
+int 	10h
+;print  
+pop		dx ; dd
+mov 	ah, 09h
+mov		al, dl
+mov		bh, 0	
+mov		bl, 0x0e
+mov		cx, 1
+int 	10h
+;movecursor
+mov		ah, 02h
+mov		bh, 0
+mov		dh, 0
+mov		dl, 48
+add		si, 1
+int 	10h
 
 Activate_A20Gate:
 		mov		ax,	0x2401
