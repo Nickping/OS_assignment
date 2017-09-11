@@ -69,11 +69,12 @@ PRINT_NEW_LINE:
 ; add your code here
 ; print current date to boch display
 
+
 NTER:
 mov     ah, 0x04
 int     0x1a
 
-mov		bx, 0
+mov		bx, 20
 
 CENTURY:
 mov		bh, ch
@@ -83,8 +84,7 @@ mov		bl, ch
 and		bl, 0x0f
 add		bl, 0x30
 mov		ax, bx
-mov		bx, 0
-mov		bx, si
+mov		bx, 40*2
 mov     byte[es:bx], ah
 add     bx, 1
 mov     byte[es:bx], 0x0e
